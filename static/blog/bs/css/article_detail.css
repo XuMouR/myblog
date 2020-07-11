@@ -1,0 +1,70 @@
+.article_info .title {
+    margin-bottom: 20px;
+}
+
+#div_digg {
+    float: right;
+    margin-bottom: 10px;
+    margin-right: 30px;
+    font-size: 12px;
+    width: 125px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.diggit {
+    float: left;
+    width: 46px;
+    height: 52px;
+    background: url(/static/blog/bs/img/upup.gif) no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+}
+
+.buryit {
+    float: right;
+    margin-left: 20px;
+    width: 46px;
+    height: 52px;
+    background: url(/static/blog/bs/img/downdown.gif) no-repeat;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 2px;
+    padding-top: 5px;
+}
+
+.clear {
+    clear: both;
+}
+
+input.author {
+    background-image: url(/static/blog/bs/img/icon_form.jpg);
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    padding: 4px 4px 4px 30px;
+    width: 300px;
+    font-size: 13px;
+    background-position: 3px -3px;
+}
+
+.comment_con {
+    margin-top: 10px;
+}
+.cont{
+    /*background-color: beige;*/
+    font-family:"Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;;
+    line-height: 1.7;
+    font-size: 16px;
+
+}
+.text-center a{
+    font-family:"Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;;
+    text-decoration: none;
+
+}
+.comments ul li a{
+    text-decoration: none;
+
+}

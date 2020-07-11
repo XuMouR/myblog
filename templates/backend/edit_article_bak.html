@@ -1,0 +1,66 @@
+{% extends 'backend/base.html' %}
+
+
+{% block content %}
+    <h3 style="color: red">修改文章</h3>
+    <div>
+        <form action="" class="form-horizontal" method="post">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div>
+                    <label for="title">文章标题</label>
+                    <input type="text" class="form-control" placeholder="文章标题" name="title"
+                           value="{{ edit_artice_title }}">
+
+                </div>
+                <div>
+                    <label for="desc">文章描述</label>
+                    <input type="text" class="form-control" placeholder="文章描述" name="desc"
+                           value="{{ edit_artice_desc }}">
+                </div>
+                <div>
+                    <label for="desc">文章内容</label>
+                    <input type="text" class="form-control" placeholder="文章内容" name="content"
+                           value="{{ edit_artice_content }}">
+                </div>
+
+{#                <div>#}
+{#                    <label for="category">文章分类</label>#}
+{#                    <select class="form-control" name="category" id="">#}
+{#                        {% for category in category_list %}#}
+{#                            {% if category.title == article_category_title %}#}
+{#                                <option selected value="{{ category.pk }}">{{ category.title }}</option>#}
+{#                            {% endif %}#}
+{#                            <option value="{{ category.pk }}">{{ category.title }}</option>#}
+{##}
+{#                        {% endfor %}#}
+{##}
+{#                    </select>#}
+{#                </div>#}
+{#                <div>#}
+{#                    <label for="tags">文章标签</label>#}
+{#                    <select class="form-control" name="category" id="">#}
+{#                        {% for tag in tag_list %}#}
+{#                            {% if tag.title == article_tag_title_obj %}#}
+{#                                <option selected value="{{ tag.pk }}">{{ tag.title }}</option>#}
+{#                            {% endif %}#}
+{#                            <option value="{{ tag.pk }}">{{ tag.title }}</option>#}
+{##}
+{#                        {% endfor %}#}
+{##}
+{#                    </select>#}
+{#                </div>#}
+                <div class="col-md-12">
+                    <input type="submit" value="提交" class="btn btn-default pull-right">
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+{% endblock %}

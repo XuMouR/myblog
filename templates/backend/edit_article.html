@@ -1,0 +1,87 @@
+{% extends 'backend/base.html' %}
+
+
+{% block content %}
+    <br>
+    <div class="edit_article">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="edit_article" style="height: 600px;">
+                    <div class="title1 form-group">
+                        <label for="title">文章标题</label>
+                        <input type="text" class="form-control" placeholder="文章标题" name="title"
+                               value="{{ edit_artice_title }}">
+                    </div>
+                    <div class="desc form-group">
+                        <label for="desc">文章描述</label>
+                        <textarea style="width: 600px;height: 130px">{{ edit_artice_desc }}</textarea>
+                    </div>
+                    <div class="content form-group">
+                        <label for="">内容(Kindeditor编辑器，不支持拖放/粘贴上传图片) </label>
+                        <div>
+                            <textarea name="content" id="article_content" cols="100" rows="20"
+                                      style="text-indent: 2em;">{{ edit_artice_content }}</textarea>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-default" value="提交">
+                </div>
+                {#                <div class="content form-group">#}
+                {#                    <label for="desc">文章内容</label>#}
+                {#                    <input type="text" class="form-control" placeholder="文章内容" name="content"#}
+                {#                           value="{{ edit_artice_content }}">#}
+                {#                </div>#}
+
+                {#                <div>#}
+                {#                    <label for="category">文章分类</label>#}
+                {#                    <select class="form-control" name="category" id="">#}
+                {#                        {% for category in category_list %}#}
+                {#                            {% if category.title == article_category_title %}#}
+                {#                                <option selected value="{{ category.pk }}">{{ category.title }}</option>#}
+                {#                            {% endif %}#}
+                {#                            <option value="{{ category.pk }}">{{ category.title }}</option>#}
+                {##}
+                {#                        {% endfor %}#}
+                {##}
+                {#                    </select>#}
+                {#                </div>#}
+                {#                <div>#}
+                {#                    <label for="tags">文章标签</label>#}
+                {#                    <select class="form-control" name="category" id="">#}
+                {#                        {% for tag in tag_list %}#}
+                {#                            {% if tag.title == article_tag_title_obj %}#}
+                {#                                <option selected value="{{ tag.pk }}">{{ tag.title }}</option>#}
+                {#                            {% endif %}#}
+                {#                            <option value="{{ tag.pk }}">{{ tag.title }}</option>#}
+                {##}
+                {#                        {% endfor %}#}
+                {##}
+                {#                    </select>#}
+                {#                </div>#}
+                {#                <div class="col-md-12">#}
+                {#                    <input type="submit" value="提交" class="btn btn-default pull-right">#}
+                {#                </div>#}
+
+            </div>
+        </form>
+        <script charset="utf-8" src="/static/kindeditor/kindeditor-all.js"></script>
+        <script>
+            KindEditor.ready(function (K) {
+                window.editor = K.create("#article_content", {
+                    width: "800",
+                    height: "600",
+                    resizeType: 0,
+                    uploadJson: "/upload",
+                    extraFileUploadParams: {
+                        csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
+                    },
+                    filePostName: "upload_img"
+                });
+            });
+        </script>
+
+
+    </div>
+
+
+{% endblock %}

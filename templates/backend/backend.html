@@ -1,0 +1,64 @@
+{% extends 'backend/base.html' %}
+
+
+{% block content %}
+    <div class="article_list small">
+
+        <table class="table table-hover table-striped">
+            <thead>
+            <th>标题</th>
+            <th>评论数</th>
+            <th>点赞数</th>
+            <th>编辑</th>
+            <th>删除</th>
+            </thead>
+            <tbody>
+
+            {% for article in article_list %}
+                <tr>
+                    <td><a href="/{{ user }}/articles/{{ article.pk }}/">{{ article.title }}</a></td>
+                    <td>{{ article.comment_count }}</td>
+                    <td>{{ article.up_count }}</td>
+                    <td class="edit-btn"><a href="/edit_article/{{ article.pk }}" id="{{ article.pk }}">编辑</a></td>
+                    <td>
+                        <button class="ajax-del-btn" pk="{{ article.pk }}">ajax删除</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <a href="/cn_backend/add_article/" class="btn btn-primary" style="float: right;">添加文章</a>
+    </div>
+    <script>
+        $(".ajax-del-btn").click(function () {
+
+            let id = $(this).attr("pk");
+            let $tr = $(this).parent().parent();
+
+            $.ajax({
+                url: "/delete_article/",
+                data: {
+                    pk: id,
+                },
+                success: function (res) {
+                    console.log("删除>", res);
+                    if (res.state) {
+                        $tr.remove();
+                        alert("删除成功！");
+                    } else {
+
+                        alert("删除失败")
+                    }
+
+                }
+
+
+            })
+
+        })
+
+
+    </script>
+
+{% endblock %}

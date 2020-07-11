@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XuMou's Blog&nbsp;|XuMou</title>
+    <link rel="stylesheet" href="/static/blog/bs/css/bootstrap.css">
+    <script src="/static/blog/bs/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/blog/bs/js/bootstrap.min.js"></script>
+    <style>
+        #use_icon {
+            font-size: 18px;
+            margin-right: 10px;
+            vertical-align: -3px;
+            /* vertical-align   # 属性设置元素的垂直对齐方式。*/
+        }
+    </style>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+
+        }
+        html,body a{
+             font-family:"Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;;
+        }
+        .panel-body{
+
+         font-family:"Microsoft JhengHei","Source Han Sans SC","Noto Sans CJK SC","Source Han Sans CN","Noto Sans SC","Source Han Sans TC","Noto Sans CJK TC","WenQuanYi Micro Hei",SimSun,sans-serif;;
+        }
+
+        .ID {
+        {#margin-left: 20px;#}{#padding: 20px;#} height: 50px;
+            text-align: center;
+
+        }
+
+        .ID a {
+            font-size: 22px;
+            color: #deddef;
+            text-decoration: #DEDDEF;
+
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .ul_l li {
+            margin-top: 4px;
+        }
+
+        #login_area {
+            float: right;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #cnts {
+            position: relative;
+        }
+
+        #nav_menu_style {
+            background-image: url("/static/blog/bs/backgrounds/未标题-1.jpg");
+        {#background-image: url("/static/blog/bs/backgrounds/b5a2f4a7428e1c1ebb91d8f2d99fa68d.jpg");#}
+            background-repeat: no-repeat;
+            height: 380px;
+            background-size: 100%;
+        }
+
+        #nav_menu_style .font_style {
+            color: #ffffff;
+        }
+
+        #nav_menu_style span {
+            float: right;
+            color: white;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .user_login {
+            text-align: right;
+
+        }
+
+        #nav_menu_style .font_style:hover {
+            color: #757575;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            margin: 0 auto;
+        }
+
+        .ID, .user_login {
+            display: inline-block;
+
+        }
+
+        .user_login {
+            float: right;
+            margin: 0;
+            font-size: 20px;
+            color: white;
+
+        }
+
+        .ID {
+            margin: 0;
+
+        }
+
+        .ID span {
+
+            line-height: 50px;
+            margin-left: 30px;
+            margin-top: 6px;
+
+        }
+
+        .ID span a:hover {
+            color: #ced4ef;
+
+        }
+
+        .nav-pills a {
+            color: white;
+            font-size: 15px;
+
+        }
+
+        .nav-pills a:hover {
+
+        }
+
+        .nav-pills {
+            margin-top: 6px;
+            margin-right: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            position: absolute;
+        {#font-weight:normal;#}{#font-style:oblique;#} font-family: -apple-system, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", SimSun, sans-serif;
+        }
+
+        .article_title_t {
+            text-align: center;
+
+        }
+
+        .article_title_t a {
+            text-decoration: red;
+            font-size: 26px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+
+        }
+
+        .article_title_t:hover {
+            color: #0085a1;
+
+        }
+
+        .media-right {
+            text-indent: 2em;
+        }
+
+        .media-right:hover {
+
+            color: #337ab7;
+
+        }
+        .panel-body img{
+            width: 27%;
+        }
+        .panel-body{
+            width: 80%;
+
+        }
+        .panel-body img span{
+            display: inline-block;
+        }
+
+        .container-fluid{
+            padding: 0;
+        }
+
+
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+<div id="hd_info" class="container-fluid">
+    <div id="cnts" class="clearfix">
+        <div id="login_area">
+
+
+        </div>
+    </div>
+</div>
+
+<div class="" id="header">
+</div>
+<div class="container-fluid" id="nav_menu">
+
+    <div id="nav_menu_style">
+        <div class="ID">
+            <span><a href="/blog/index/">XuMou'Blog</a></span>
+        </div>
+        <div class="user_login">
+            <ul class="nav nav-pills">
+                {% if request.user.username %}
+                    <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/blog/cn_backend/">我的博客</a>
+
+                    </li>
+                    <li>
+                        <a href="/blog/change_pwd/">修改密码</a>
+
+                    </li>
+                    <li>
+                        <a href="#">设置</a>
+
+                    </li>
+                    <li>
+                        <a href="/blog/logout/">退出</a>
+                    </li>
+
+
+                {% else %}
+                    <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/blog/index/">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Tags</a>
+                    </li>
+
+                    <li>
+                        <a href="/blog/login">Login</a>
+                    </li>
+
+                {% endif %}
+                </ul>
+
+                </ul>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="col-md-7 col-lg-offset-3">
+            <h1>世界既不黑也不白&nbsp;&nbsp;而是一道精致的灰</h1>
+        </div>
+
+
+    </div>
+
+</div>
+<br>
+{#<div id="main" class="col-md-12">#}
+<div id="main" class="col-md-12">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            学习路线
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="ul_l">
+                            <li><a href="">先学Python</a></li>
+                            <li><a href="">再学H5</a></li>
+                            <li><a href="">再学学C++</a></li>
+                            <li><a href="">后学Linux</a></li>
+                            <li><a href="">还学Java</a></li>
+                            <li><a href="">更要学Go</a></li>
+                            <li><a href="">学心脏医学全接触</a></li>
+                            <li><a href="">最后进ICU</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                {% for article in current_page_obj %}
+                    <div>
+                        {% if request.user.username %}
+                            <h5 class="article_title_t"><a
+                                    href="/blog/{{ article.user }}/articles/{{ article.pk }}/">{{ article.title }}</a></h5>
+
+                        {% else %}
+                            <h5 class="article_title_t"><a href="/blog/articles/{{ article.pk }}/">{{ article.title }}</a>
+                            </h5>
+                        {% endif %}
+
+                    </div>
+                    <div>
+                        <span class="media-left">
+                             <img src="/blog/static/media/{{ article.user.avatar }}" alt="" width="56px" height="56px">
+                        </span>
+                        <span class="media-right">
+                             {{ article.desc }}
+                        </span>
+                    </div>
+                    <br>
+                    <div class="small" style="float: right">
+
+                        <span>
+                            {{ article.user }}
+                        </span>&nbsp;&nbsp;
+
+                        <span>
+                            发布于&nbsp;&nbsp;{{ article.create_time|date:"Y-m-d H:i" }}
+                        </span>&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-comment"></span>评论({{ article.comment_count }})&nbsp;&nbsp;
+                        <span class="glyphicon glyphicon-thumbs-up"></span>点赞数({{ article.down_count }})&nbsp;&nbsp;
+                    </div>
+
+                    <hr>
+                {% endfor %}
+
+            </div>
+
+
+
+
+            <hr style="background-color: #eee;border: 0;height: 2px">
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            博客信息
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        迷失的人迷失了，相逢的人会再相逢！
+                    </div>
+                </div>
+                <hr style="background-color: #eee;border: 0;height: 2px">
+
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            About &nbsp;Me
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1605728711,3914040568&fm=26&gp=0.jpg">
+                        <span>简单介绍下自己</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer"></div>
+<div id="footer_bottom"></div>
+
+
+<!-- 分页器的使用 -->
+<div class="page_region text-center">
+    {{ pagination.page_html|safe }}
+</div>
+</body>
+</html>
