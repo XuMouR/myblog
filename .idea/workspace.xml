@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8414e198-6ff3-4c9c-8e81-e75add2440bb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="8414e198-6ff3-4c9c-8e81-e75add2440bb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,8 +155,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="294" column="38" selection-start-line="294" selection-start-column="38" selection-end-line="294" selection-end-column="38" />
+            <state relative-caret-position="165">
+              <caret line="297" column="44" lean-forward="true" selection-start-line="297" selection-start-column="44" selection-end-line="297" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -475,7 +473,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.18062398" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.29720855" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.54590166" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.24918033" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -817,8 +815,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="294" column="38" selection-start-line="294" selection-start-column="38" selection-end-line="294" selection-end-column="38" />
+        <state relative-caret-position="165">
+          <caret line="297" column="44" lean-forward="true" selection-start-line="297" selection-start-column="44" selection-end-line="297" selection-end-column="44" />
         </state>
       </provider>
     </entry>
