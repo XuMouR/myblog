@@ -7,7 +7,6 @@
         {{ article_obj.content|safe }}
     </div>
 
-
     <div id="div_digg">
         {% csrf_token %}
         <div class="diggit action">
@@ -76,9 +75,10 @@
 
     <!-- 给点赞图片绑定点赞事件 -->
     <script>
-        $("#div_digg .action").click(function () {
+        $("#div_digg.action").click(function () {
             // 检查当前 div是否有 diggit 这个属性 ，有则为true，无则为false
             var is_up = $(this).hasClass("diggit");
+            console.log("is_up",is_up)
 
             //传入ajax事件
             $.ajax({

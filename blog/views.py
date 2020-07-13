@@ -57,6 +57,7 @@ def register(request):
             pwd = form.cleaned_data.get("pwd")
             email = form.cleaned_data.get("email")
             avatar_obj = request.FILES.get("avatar")  # 拿到用户上传的图片对象
+            print("图片路径",avatar_obj)
             # print("提交的数据是〉〉", user, pwd, email, avatar_obj)
             if avatar_obj:
                 # 将新用户注册信息写入数据库
@@ -305,7 +306,7 @@ def digg(request):
     article_id = request.POST.get("article_id")
     is_up = json.loads(request.POST.get("is_up"))
     # print("is_up>>>", is_up)
-    # 点赞的是当前登录人  怎么提取当前登录人？？
+    # 点赞的是当前登录人  提取当前登录人pk？？
     user_id = request.user.pk
     # print("user_id", user_id)
     # 查找当前登录用户 在当前文章和点赞表里的记录是存在
@@ -458,7 +459,7 @@ def add_article(request):
         # 构建摘要数据，获取标签字符串的钱150个字符
         # desc = soup.text[0:150]
         desc = desc
-        # print("desc????",desc)
+
         Article.objects.create(title=title, desc=desc, content=str(soup), user=request.user)
         return redirect('/cn_backend/')
 

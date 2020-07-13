@@ -47,7 +47,7 @@ urlpatterns = [
     path("get_comment_tree/", views.get_coment_tree),
 
     # 后台管理界面
-    # 文章的增删改查功能url
+    # 注册时，上传图片走的路由
     path('upload/',views.upload),
     # 后台管理界面
     re_path(r'cn_backend/$',views.cn_backend),
