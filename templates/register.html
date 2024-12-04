@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XuMou's Blog&nbsp;|XuMou</title>
+    <link rel="stylesheet" href="/static/blog/bs/css/bootstrap.css">
+    <style>
+        html, body {
+        {#height: 100%;#} background-color: #f4f4f4;
+
+        }
+
+        h1 {
+            text-align: center;
+            color: deepskyblue;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        #avatar {
+            display: none;
+        }
+
+        .error {
+            color: red;
+
+        }
+
+        #avatar_img {
+            margin-left: 20px;
+
+        }
+
+        #avatar_img:hover {
+            cursor: pointer;
+
+        }
+        .reg_to_index{
+            font-size: 33px;
+        }
+        .reg_to_index a{
+            text-decoration: none;
+        }
+
+
+    </style>
+</head>
+
+<body>
+<h1 class="reg_to_index"><a href="/blog/index/">XuMou's&nbsp;Blog</a></h1>
+<div class="container register_div">
+    <div class="row">
+        <div class="col-md-4 col-lg-offset-4">
+            <form id="form">
+                {% csrf_token %}
+                <!-- form渲染 -->
+                {% for field in form %}
+                    <div class="form-group">
+                        <!--Form.auto_id id 和label 的行为使用Form构造函数的auto_id 参数控制。 这个参数必须为True、False 或者一个字符串。
+                            默认情况下，auto_id 设置为'id_%s'；
+                            auto_id =True ：有lable和id，此时id的值为Form类中的字段名，有空格的会改为_
+                            auto_id =False ：没有lable标签和id属性
+                        -->
+                        <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                        {{ field }} <span class="error pull-right"></span>
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <label for="avatar">头像
+                        <img id="avatar_img" width="60px" src="/static/blog/bs/img/default.jpg" alt="">
+                    </label>
+                    <input type="file" id="avatar" name="avatar">
+                </div>
+                <input type="button" class="btn btn-default reg_btn" name="" value="注册"><span class="error"></span>
+                &nbsp;已有账号?&nbsp;<a href="/blog/login/" style="display: inline-block;text-decoration:none; color: #5d9cec;">去登陆！</a>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</body>
+<script src="/static/blog/bs/js/jquery-3.3.1.min.js"></script>
+
+<!-- 进行头像预览操作 -->
+<script>
+    // .change（function）change事件发生时，就运行funct函数
+    $("#avatar").change(function () {
+        // 获取用户选中的文件
+        var file_obj = $(this)[0].files[0];
+        /* 获取文件对象的路径 */
+        var reader = new FileReader();
+        reader.readAsDataURL(file_obj);
+        /* 修改img 这个标签的src的属性，也就是改变src这个对象的路径 */
+        reader.onload = function () {
+            $("#avatar_img").attr("src", reader.result)
+            alert(reader.result)
+        };
+
+    });
+    <!--  基于ajax提交注册信息 -->
+    $(".reg_btn").click(function () {
+        var formdata = new FormData();
+        formdata.append("user", $("#id_user").val());
+        formdata.append("pwd", $("#id_pwd").val());
+        formdata.append("r_pwd", $("#id_r_pwd").val());
+        formdata.append("email", $("#id_email").val());
+        formdata.append("avatar", $("#avatar")[0].files[0]);
+        formdata.append("csrfmiddlewaretoken", $("[name='csrfmiddlewaretoken']").val());
+
+        $.ajax({
+            url: "/blog/register/",
+            type: "post",
+            contentType: false, /* contentType 告诉服务器从浏览器提交过来的数据格式。*/
+            /*
+             processData
+            类型：Boolean
+            默认值: true。默认情况下，通过data选项传递进来的数据，如果是一个对象(技术上讲只要不是字符串)，都会处理转化成一个查询字符串，
+            以配合默认内容类型 “application/x-www-form-urlencoded”。如果要发送 DOM 树信息或其它不希望转换的信息，请设置为 false。
+            */
+            processData: false,
+            data: formdata,
+            success: function (data) {
+                console.log("1", data);
+                console.log("2", data.user);
+                if (data.user) {
+                    //注册成功！
+                    alert("注册成功");
+                    console.log("data_user>>>", data.user);
+                    location.href = '/blog/index/'
+                } else {
+                    //注册失败
+                    console.log("注册失败");
+                    // 清空错误消息提示
+                    $("span.error").html("");
+                    // has-error是bootstrap中的一个class
+                    $(".form-group").removeClass("has-error");
+                    // 这里each是遍历这个data.msg 一维数组的每一个二维数组，而field则是每一个元素的下标，
+                    // error_list则表这个一维数组的每一个二维数组
+                    // 显示提醒的错误信息
+                    $.each(data.msg, function (field, error_list) {
+                        console.log(">>>", field, error_list);
+                        if (field == "__all__") {
+                            $("#id_r_pwd").next().html(error_list[0]).parent().addClass("has-error");
+                        }
+                        $("#id_" + field).next().html(error_list[0]);
+                        $("#id_" + field).parent().addClass("has-error");
+                    })
+                }
+
+            }
+
+        });
+
+    });
+</script>
+</html>
+
