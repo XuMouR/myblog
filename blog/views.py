@@ -124,6 +124,7 @@ def logout(request):
 
 
 # 首页函数
+
 def index(request):
     article_list = Article.objects.all()
     current_page = request.GET.get("page")
@@ -135,8 +136,8 @@ def index(request):
 
     #  批量生成假数据
     # from fake_data_file import add_fake_data
-    # add_fake_data.add_fake_datas(request
-    print(request.user)
+    # add_fake_data.add_fake_datas(request)
+    # print(request.user)
     return render(request, "index.html", locals())
 
     '''

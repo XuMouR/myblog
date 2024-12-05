@@ -24,9 +24,10 @@ from myblog import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+
     # 使用include进行urls管理
     path('blog/',include("blog.urls")),
-    re_path('', include("blog.urls")),   #
+    re_path('', include("blog.urls"))  #
 
     # path("login/", views.login),
     # path("index/", views.index),
