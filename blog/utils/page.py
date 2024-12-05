@@ -25,12 +25,11 @@ class Pagination(object):
         self.current_page = current_page
         self.all_count = all_count
         self.per_page = per_page  # 每一页显示的数据条数
-        print("分页器当前的页面〉〉",current_page)
 
         # 计算总页数
         # print("计算",all_count,per_page)
         num_pages, tmp = divmod(all_count, per_page)  # 多的一条数据也展示一页
-        print("多少页》〉",num_pages,tmp)
+        print(num_pages,tmp)
         if tmp:
             num_pages += 1
         self.num_pages = num_pages

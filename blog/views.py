@@ -35,7 +35,7 @@ def login(request):
         # print("登陆用户提交的数据〉〉", user, pwd, )
         # print("authenticate验证结果〉", user_login)
         if user_login:
-            # 将user对象注册进去
+            # 将 user对象注册进去
             auth.login(request, user_login)
             response["user"] = user_login.username
 
@@ -59,8 +59,7 @@ def register(request):
             avatar_obj = request.FILES.get("avatar")  # 拿到用户上传的图片对象
             print("图片路径", avatar_obj)
             # print("提交的数据是〉〉", user, pwd, email, avatar_obj)
-            if avatar_obj:
-                # 将新用户注册信息写入数据库
+            if avatar_obj:                # 将新用户注册信息写入数据库
                 # user_obj = UserInfo.objects.create(username=user, password=pwd, email=email, avatar=avatar_obj)
                 user_obj = UserInfo.objects.create_user(username=user, password=pwd, email=email, avatar=avatar_obj)
 
@@ -68,7 +67,7 @@ def register(request):
                 # 使用默认头像
                 # user_obj = UserInfo.objects.create(username=user, password=pwd, email=email)
                 user_obj = UserInfo.objects.create_user(username=user, password=pwd, email=email)
-        else:
+        else    :
             print("错误>>", form.errors)
             response["msg"] = form.errors
 
@@ -101,7 +100,7 @@ def change_pwd(request):
             user = auth.authenticate(username=username, password=oldpassword)
             if user is not None and user.is_active:
                 newpassword = request.POST.get("newpassword1", "")
-                print("新的密码是〉",newpassword)
+                        print("新的密码是〉",newpassword)
 
                 user.set_password(newpassword)
                 user.save()
@@ -128,14 +127,16 @@ def logout(request):
 def index(request):
     article_list = Article.objects.all()
     current_page = request.GET.get("page")
-    pagination = Pagination(current_page, article_list.count(), request, per_page=2)
-    print("+++++++>>>", pagination.per_page)
+    pagination = Pagination(current_page, article_list.count(), request, per_page=10)
 
     # 当前页面的所有数据的显示范围
     current_page_obj = Article.objects.all()[pagination.start:pagination.end]
     # print("分页器〉〉",pagination.start,current_page_obj)
-    #
 
+    #  批量生成假数据
+    # from fake_data_file import add_fake_data
+    # add_fake_data.add_fake_datas(request
+    print(request.user)
     return render(request, "index.html", locals())
 
     '''

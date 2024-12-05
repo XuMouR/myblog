@@ -6,10 +6,8 @@ async def task(name, delay):
         print(f"Task {name} finished")
 
 async def main():
-        await asyncio.gather(
+        await asyncio.ga(
         task("A", 2),
         task("B", 1),
-        task("C", 3)
-        )
-
-asyncio.run(main())
+        task("C", 3
+        ))
