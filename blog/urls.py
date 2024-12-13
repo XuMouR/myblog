@@ -14,6 +14,7 @@ from django.views.static import serve
 from myblog import settings
 
 urlpatterns = [
+    path("", views.index),
     path("login/", views.login),
     path("index/", views.index),
     re_path('^$', views.index),  #
