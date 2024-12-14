@@ -12,7 +12,7 @@ from django.urls import path, re_path
 from blog import views
 from django.views.static import serve
 from myblog import settings
-
+import debug_toolbar
 urlpatterns = [
     path("", views.index),
     path("login/", views.login),
