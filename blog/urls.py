@@ -13,6 +13,7 @@ from blog import views
 from django.views.static import serve
 from myblog import settings
 import debug_toolbar
+from stark.service.site import site
 urlpatterns = [
     path("", views.index),
     path("login/", views.login),
@@ -62,6 +63,12 @@ urlpatterns = [
     re_path(r"test/", views.test),
 
     # 显示当前全网有多少条博客
-    path('blog/dashboard/', views.dashboard, name='dashboard')
+    path('blog/dashboard/', views.dashboard, name='dashboard'),
+    # 写stark 路由
+
+    path('stark/', site.urls),
+
+
+
 
 ]
